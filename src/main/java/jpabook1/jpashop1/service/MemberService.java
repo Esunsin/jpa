@@ -47,4 +47,11 @@ public class MemberService {
             throw new IllegalStateException("중복 회원 입니다.");
         }
     }
+
+    //변경감지를 이용
+    @Transactional
+    public void update(Long id, String name) {
+        Member member = memberRepository.findOne(id);
+        member.setName(name);
+    }
 }
